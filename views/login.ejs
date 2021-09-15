@@ -1,0 +1,45 @@
+<head>
+  <link rel="stylesheet" href="/css/loginsignup.css">
+  </head>
+
+<form action="login">
+  <h2>Login</h2>
+  <label for="UserName">UserName</label>
+  <input type="text" name="UserName"  />
+  <div class="email error"></div>
+  <label for="Password">Password</label>
+  <input type="password" name="Password"  />
+  <div class="password error"></div>
+  <button>login</button>
+</form>
+
+
+<script>
+  const form = document.querySelector('form');
+  const UserNameError = document.querySelector('.UserName.error');
+  const PasswordError = document.querySelector('.Password.error');
+  //kao signup  samo pozivanje drugog apija iz kontorlera i pretvaranje u json objekat
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const UserName = form.UserName.value;
+    const Password = form.Password.value;
+    try {
+      const res = await fetch ('/login', { 
+        method: 'POST' ,
+        body: JSON.stringify({ UserName, Password}),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+     
+      
+      if (data.user) {
+        location.assign('/');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

@@ -1,0 +1,50 @@
+<%-include('include/_header')%>
+<main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/"><i class="fas fa-angle-double-left"></i>All Users</a>
+               </div>
+               <div class="form-title text-center">
+                   <h2 class="text-dark">Update User</h2>
+                   <span class="text-light"> Use the form bellow to edit User information a new User</span>
+            </div>
+        </div>
+          
+        <form  method="POST" id="update_user">
+            <div class="new_user">
+                <div class="form-group">
+                <label for ="name" class="text-light">Username</label>
+                <input type="hidden" name="id" value ="<%=user._id%>">
+                <input type="text" name="UserName" value="<%=user.UserName%>" >
+            </div>
+            <div class="form-group">
+                <label for ="name" class="text-light">First Name</label>
+                
+                <input type="text" name="FirstName" value="<%=user.FirstName%>" >
+            </div>
+            <div class="form-group">
+                <label for ="name" class="text-light">Last Name</label>
+                
+                <input type="text" name="LastName" value="<%=user.LastName%>">
+            </div>      
+            <div class="form-group">
+                <label for ="name" class="text-light">Date of Birth</label>
+                
+                <input type="text" name="DateOfBirth" value="<%=user.DateOfBirth%>" >
+            </div> 
+            <div class="form-group">
+                <label for ="name" class="text-light">Password</label>
+                
+                <input type="text" name="Password" value="<%=user.Password%>" >
+            </div>      
+            
+            <div class="form-group "> 
+                <button type="submit" class="btn text-dark update">Save</button>              
+            </div>
+            </form>
+
+    </div>
+    </main>
+
+<%-include('include/_footer')%>

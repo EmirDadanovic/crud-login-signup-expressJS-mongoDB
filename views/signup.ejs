@@ -1,0 +1,53 @@
+<head>
+  <link rel="stylesheet" href="/css/loginsignup.css">
+  </head>
+<form action="/signup">
+    <h2>Sign up</h2>
+    <label for="UserName">UserName</label>
+    <input type="text" name="UserName" required />
+    <div class="Username error"></div>
+    <label for="Password">Password</label>
+    <input type="Password" name="Password" required />
+    <div class="Password error"></div>
+    <button>Sign up</button>
+    <a href="/login" class="btn">LogIn</a>
+  </form>
+  
+  
+  <script>
+      const form = document.querySelector('form');
+    const UserNameError = document.querySelector('.UserName.error');
+    const PasswordError = document.querySelector('.Password.error')
+    // asinhrona funckija koja dohvata vrijednosti iz forme poziva api ceka odgovor i redirecta nas na all users stranicu ili daje gresku ukoliku je bilo problema sa unoms broj kakratera i slicno
+    form.addEventListener('submit',async (e) => {
+      e.preventDefault();
+      
+       
+        const UserName = form.UserName.value;
+      const Password= form.Password.value;
+      
+      try{ 
+        const res=await fetch('/signup',{
+        method:'post',
+        body:JSON.stringify({UserName,Password}),
+        headers: {'Content-Type':'application/json'}
+
+      });
+      const data=await res.json();
+      console.log('data');
+      if (data.errors){
+        UserNameError.textContent =data.errors.UserName
+        PasswordError.textContent =data.errors.Password
+}
+if (data.user) {
+        location.assign('/');
+      }
+    }
+      
+      catch(err){
+        console.log(err)
+
+      }
+    });
+  </script>
+    

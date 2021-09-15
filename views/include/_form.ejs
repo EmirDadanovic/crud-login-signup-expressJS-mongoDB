@@ -1,0 +1,27 @@
+
+<form action="/api/myFirstDatabase" method="POST" id="add_user">
+    <div class="new_user">
+        
+    <div class="form-group">
+        <label for ="name" class="text-light">First Name</label>
+        <input type="hidden" name="id" value ="">
+        <input type="text" name="FirstName" value="" placeholder="dadanovic">
+    </div>
+    <div class="form-group">
+        <label for ="name" class="text-light">Last Name</label>
+        <input type="hidden" name="id" value ="">
+        <input type="text" name="LastName" value="" placeholder="dadanovic">
+    </div>      
+    <div class="form-group">
+        <label for ="name" class="text-light">Date of Birth(dashes and numbers only)</label>
+        <input type="hidden" name="id" value ="" onkeypress="return isNumberKey(event);">
+        <input type="text" name="DateOfBirth" id="dateformat" value="" placeholder="dadanovic" onkeypress="return isNumberKey(event);">
+    </div> 
+    
+    <div class="form-group "> 
+        <button type="submit" class="btn text-dark update">Save</button>              
+    </div>
+    </form>
+    <script src="/js.index.js"></script>
+  
+   
